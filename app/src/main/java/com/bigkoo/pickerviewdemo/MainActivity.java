@@ -249,9 +249,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          */
         Calendar selectedDate = Calendar.getInstance();//系统当前时间
         Calendar startDate = Calendar.getInstance();
-        startDate.set(2014, 1, 23);
+        //startDate.set(2014, 1, 23);
+        startDate.setTimeInMillis(System.currentTimeMillis());
         Calendar endDate = Calendar.getInstance();
-        endDate.set(2027, 2, 28);
+//        endDate.set(2027, 2, 28);
+        endDate.setTimeInMillis(System.currentTimeMillis() + 30*60*60*1000);
         //时间选择器 ，自定义布局
         pvCustomTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
@@ -298,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 })
                 .setContentTextSize(18)
-                .setType(new boolean[]{false, false, false, true, true, true})
+                .setType(new boolean[]{false, false, true, true, true, true})
                 .setLabel("年", "月", "日", "时", "分", "秒")
                 .setLineSpacingMultiplier(1.2f)
                 .setTextXOffset(0, 0, 0, 40, 0, -40)

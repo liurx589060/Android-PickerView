@@ -247,7 +247,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            e.printStackTrace();
 //        }
 //        startDate.set(2019,3,27,12,57,12);
-        endDate.set(2019,3,30,23,15,12);
+//        endDate.set(2019,3,30,23,15,12);
+        endDate.setTimeInMillis(System.currentTimeMillis() + 10 * 60 * 60 * 1000);
         pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {

@@ -558,28 +558,49 @@ public class WheelTime {
     private void updateHMSAdapter(int h,int m,int s) {
         //时
         wv_hours = (WheelView) view.findViewById(R.id.hour);
-        if((int)wv_day.getCurrentValue() >= endDay) {
+        if((int)wv_day.getCurrentValue() <= startDay) {
+            if(endDay > startDay) {
+                setHourAdapter(startHour,DEFAULT_END_HOUR);
+            }else {
+                setHourAdapter(startHour,endHour);
+            }
+        }else if((int)wv_day.getCurrentValue() >= endDay) {
             setHourAdapter(0,endHour);
         }else {
             setHourAdapter(0,DEFAULT_END_HOUR);
         }
 
-        wv_hours.setCurrentItem(h);
+        wv_hours.setCurrentValue(h);
         wv_hours.setGravity(gravity);
         //分
         wv_minutes = (WheelView) view.findViewById(R.id.min);
-        if((int)wv_hours.getCurrentValue() >= endHour
+        if((int)wv_day.getCurrentValue() <= startDay
+                && (int)wv_hours.getCurrentValue() <= startHour) {
+            if(endHour > startHour) {
+                setMinAdapter(startMin,DEFAULT_END_MIN);
+            }else {
+                setMinAdapter(startMin,endMin);
+            }
+        }else if((int)wv_hours.getCurrentValue() >= endHour
                 && (int)wv_day.getCurrentValue() >= endDay) {
             setMinAdapter(0,endMin);
         }else {
             setMinAdapter(0,DEFAULT_END_MIN);
         }
 
-        wv_minutes.setCurrentItem(m);
+        wv_minutes.setCurrentValue(m);
         wv_minutes.setGravity(gravity);
         //秒
         wv_seconds = (WheelView) view.findViewById(R.id.second);
-        if((int)wv_minutes.getCurrentValue() >= endMin
+        if((int)wv_day.getCurrentValue() <= startDay
+                && (int)wv_hours.getCurrentValue() <= startHour
+                && (int)wv_minutes.getCurrentValue() <= startMin) {
+            if(endMin > startMin) {
+                setSecondAdapter(startSecond,DEFAULT_END_SECOND);
+            }else {
+                setSecondAdapter(startSecond,endSecond);
+            }
+        }else if((int)wv_minutes.getCurrentValue() >= endMin
                 && (int)wv_hours.getCurrentValue() >= endHour
                 && (int)wv_day.getCurrentValue() >= endDay) {
             setSecondAdapter(0,endSecond);
@@ -587,7 +608,7 @@ public class WheelTime {
             setSecondAdapter(0,DEFAULT_END_SECOND);
         }
 
-        wv_seconds.setCurrentItem(s);
+        wv_seconds.setCurrentValue(s);
         wv_seconds.setGravity(gravity);
     }
 
@@ -606,7 +627,8 @@ public class WheelTime {
                 public void onItemSelected(int index) {
                     mSelectChangeCallback.onTimeSelectChanged();
                     wheelView.setCurrentItem(index);
-                    updateHMSAdapter(wv_hours.getCurrentItem(),wv_minutes.getCurrentItem(),wv_seconds.getCurrentItem());
+                    updateHMSAdapter((int)wv_hours.getCurrentValue(),(int)wv_minutes.getCurrentValue(),
+                            (int)wv_seconds.getCurrentValue());
                 }
             });
         }

@@ -316,6 +316,21 @@ public class WheelView extends View {
         invalidate();
     }
 
+    public final void setCurrentValue(int value) {
+        int currentItem = 0;
+        for(int i = 0 ; i < adapter.getItemsCount() ; i++) {
+            if(value == (int) getCurrentValue(i)) {
+                currentItem = i;
+                break;
+            }
+        }
+        //不添加这句,当这个wheelView不可见时,默认都是0,会导致获取到的时间错误
+        this.selectedItem = currentItem;
+        this.initPosition = currentItem;
+        totalScrollY = 0;//回归顶部，不然重设setCurrentItem的话位置会偏移的，就会显示出不对位置的数据
+        invalidate();
+    }
+
     public final void setOnItemSelectedListener(OnItemSelectedListener OnItemSelectedListener) {
         this.onItemSelectedListener = OnItemSelectedListener;
     }
@@ -347,6 +362,14 @@ public class WheelView extends View {
             return null;
         }
         Object result = adapter.getItem(getCurrentItem());
+        return result;
+    }
+
+    public Object getCurrentValue(int index) {
+        if(adapter == null) {
+            return null;
+        }
+        Object result = adapter.getItem(index);
         return result;
     }
 

@@ -338,7 +338,16 @@ public class WheelView extends View {
         if (isLoop && (selectedItem < 0 || selectedItem >= adapter.getItemsCount())) {
             return Math.max(0, Math.min(Math.abs(Math.abs(selectedItem) - adapter.getItemsCount()), adapter.getItemsCount() - 1));
         }
-        return Math.max(0, Math.min(selectedItem, adapter.getItemsCount() - 1));
+        int item = Math.max(0, Math.min(selectedItem, adapter.getItemsCount() - 1));
+        return item;
+    }
+
+    public Object getCurrentValue() {
+        if(adapter == null) {
+            return null;
+        }
+        Object result = adapter.getItem(getCurrentItem());
+        return result;
     }
 
     public final void onItemSelected() {

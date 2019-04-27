@@ -20,7 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:text="@string/picker_custom_lunar" />
+                android:text="@string/picker_custom_lunar"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/btn_Time"
@@ -35,7 +36,8 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/tvTime"
                 android:layout_margin="10dp"
-                android:text="@string/picker_province" />
+                android:text="@string/picker_province"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/btn_CustomTime"
@@ -43,7 +45,8 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/tvTime"
                 android:layout_margin="10dp"
-                android:text="@string/picker_custom_time" />
+                android:text="@string/picker_custom_time"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/btn_CustomOptions"
@@ -51,7 +54,8 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/tvTime"
                 android:layout_margin="10dp"
-                android:text="@string/picker_custom_province" />
+                android:text="@string/picker_custom_province"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/btn_no_linkage"
@@ -59,7 +63,8 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/tvTime"
                 android:layout_margin="10dp"
-                android:text="@string/picker_non_linkage" />
+                android:text="@string/picker_non_linkage"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/btn_GotoJsonData"
@@ -67,7 +72,8 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/tvTime"
                 android:layout_margin="10dp"
-                android:text="@string/picker_json_parse_sample" />
+                android:text="@string/picker_json_parse_sample"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/btn_fragment"
@@ -75,7 +81,8 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/tvTime"
                 android:layout_margin="10dp"
-                android:text="@string/picker_custom_parent" />
+                android:text="@string/picker_custom_parent"
+                android:visibility="invisible"/>
 
         </LinearLayout>
 

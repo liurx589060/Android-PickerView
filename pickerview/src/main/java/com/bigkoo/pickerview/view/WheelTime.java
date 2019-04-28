@@ -595,7 +595,7 @@ public class WheelTime {
         if((int)wv_day.getCurrentValue() <= startDay
                 && (int)wv_hours.getCurrentValue() <= startHour
                 && (int)wv_minutes.getCurrentValue() <= startMin) {
-            if(endMin > startMin) {
+            if(endMin  > startMin) {
                 setSecondAdapter(startSecond,DEFAULT_END_SECOND);
             }else {
                 setSecondAdapter(startSecond,endSecond);
@@ -796,6 +796,44 @@ public class WheelTime {
         wv_seconds.setCyclic(cyclic);
     }
 
+//    public String getTime() {
+//        if (isLunarCalendar) {
+//            //如果是农历 返回对应的公历时间
+//            return getLunarTime();
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        if (currentYear == startYear) {
+//           /* int i = wv_month.getCurrentItem() + startMonth;
+//            System.out.println("i:" + i);*/
+//            if ((wv_month.getCurrentItem() + startMonth) == startMonth) {
+//                sb.append((wv_year.getCurrentItem() + startYear)).append("-")
+//                        .append((wv_month.getCurrentItem() + startMonth)).append("-")
+//                        .append((wv_day.getCurrentItem() + startDay)).append(" ")
+//                        .append(wv_hours.getCurrentItem()).append(":")
+//                        .append(wv_minutes.getCurrentItem()).append(":")
+//                        .append(wv_seconds.getCurrentItem());
+//            } else {
+//                sb.append((wv_year.getCurrentItem() + startYear)).append("-")
+//                        .append((wv_month.getCurrentItem() + startMonth)).append("-")
+//                        .append((wv_day.getCurrentItem() + 1)).append(" ")
+//                        .append(wv_hours.getCurrentItem()).append(":")
+//                        .append(wv_minutes.getCurrentItem()).append(":")
+//                        .append(wv_seconds.getCurrentItem());
+//            }
+//
+//        } else {
+//            sb.append((wv_year.getCurrentItem() + startYear)).append("-")
+//                    .append((wv_month.getCurrentItem() + 1)).append("-")
+//                    .append((wv_day.getCurrentItem() + 1)).append(" ")
+//                    .append(wv_hours.getCurrentItem()).append(":")
+//                    .append(wv_minutes.getCurrentItem()).append(":")
+//                    .append(wv_seconds.getCurrentItem());
+//        }
+//
+//        return sb.toString();
+//    }
+
+
     public String getTime() {
         if (isLunarCalendar) {
             //如果是农历 返回对应的公历时间
@@ -805,29 +843,29 @@ public class WheelTime {
         if (currentYear == startYear) {
            /* int i = wv_month.getCurrentItem() + startMonth;
             System.out.println("i:" + i);*/
-            if ((wv_month.getCurrentItem() + startMonth) == startMonth) {
-                sb.append((wv_year.getCurrentItem() + startYear)).append("-")
-                        .append((wv_month.getCurrentItem() + startMonth)).append("-")
-                        .append((wv_day.getCurrentItem() + startDay)).append(" ")
-                        .append(wv_hours.getCurrentItem()).append(":")
-                        .append(wv_minutes.getCurrentItem()).append(":")
-                        .append(wv_seconds.getCurrentItem());
+            if (((int)wv_month.getCurrentValue()) == startMonth) {
+                sb.append(((int)wv_year.getCurrentValue())).append("-")
+                        .append(((int)wv_month.getCurrentValue())).append("-")
+                        .append(((int)wv_day.getCurrentValue())).append(" ")
+                        .append((int)wv_hours.getCurrentValue()).append(":")
+                        .append((int)wv_minutes.getCurrentValue()).append(":")
+                        .append((int)wv_seconds.getCurrentValue());
             } else {
-                sb.append((wv_year.getCurrentItem() + startYear)).append("-")
-                        .append((wv_month.getCurrentItem() + startMonth)).append("-")
-                        .append((wv_day.getCurrentItem() + 1)).append(" ")
-                        .append(wv_hours.getCurrentItem()).append(":")
-                        .append(wv_minutes.getCurrentItem()).append(":")
-                        .append(wv_seconds.getCurrentItem());
+                sb.append(((int)wv_year.getCurrentValue())).append("-")
+                        .append(((int)wv_month.getCurrentValue())).append("-")
+                        .append(((int)wv_day.getCurrentValue() + 1)).append(" ")
+                        .append((int)wv_hours.getCurrentValue()).append(":")
+                        .append((int)wv_minutes.getCurrentValue()).append(":")
+                        .append((int)wv_seconds.getCurrentValue());
             }
 
         } else {
-            sb.append((wv_year.getCurrentItem() + startYear)).append("-")
-                    .append((wv_month.getCurrentItem() + 1)).append("-")
-                    .append((wv_day.getCurrentItem() + 1)).append(" ")
-                    .append(wv_hours.getCurrentItem()).append(":")
-                    .append(wv_minutes.getCurrentItem()).append(":")
-                    .append(wv_seconds.getCurrentItem());
+            sb.append(((int)wv_year.getCurrentValue())).append("-")
+                    .append(((int)wv_month.getCurrentValue() + 1)).append("-")
+                    .append(((int)wv_day.getCurrentValue() + 1)).append(" ")
+                    .append((int)wv_hours.getCurrentValue()).append(":")
+                    .append((int)wv_minutes.getCurrentValue()).append(":")
+                    .append((int)wv_seconds.getCurrentValue());
         }
 
         return sb.toString();

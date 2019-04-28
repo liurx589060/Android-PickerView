@@ -559,10 +559,10 @@ public class WheelTime {
         //时
         wv_hours = (WheelView) view.findViewById(R.id.hour);
         if((int)wv_day.getCurrentValue() <= startDay) {
-            if(endDay > startDay) {
-                setHourAdapter(startHour,DEFAULT_END_HOUR);
-            }else {
+            if((int)wv_day.getCurrentValue() == endDay) {
                 setHourAdapter(startHour,endHour);
+            }else {
+                setHourAdapter(startHour,DEFAULT_END_HOUR);
             }
         }else if((int)wv_day.getCurrentValue() >= endDay) {
             setHourAdapter(0,endHour);
@@ -576,10 +576,11 @@ public class WheelTime {
         wv_minutes = (WheelView) view.findViewById(R.id.min);
         if((int)wv_day.getCurrentValue() <= startDay
                 && (int)wv_hours.getCurrentValue() <= startHour) {
-            if(endHour > startHour) {
-                setMinAdapter(startMin,DEFAULT_END_MIN);
-            }else {
+            if((int)wv_day.getCurrentValue() == endDay
+                    && (int)wv_hours.getCurrentValue() == endHour) {
                 setMinAdapter(startMin,endMin);
+            }else {
+                setMinAdapter(startMin,DEFAULT_END_MIN);
             }
         }else if((int)wv_hours.getCurrentValue() >= endHour
                 && (int)wv_day.getCurrentValue() >= endDay) {
@@ -595,10 +596,12 @@ public class WheelTime {
         if((int)wv_day.getCurrentValue() <= startDay
                 && (int)wv_hours.getCurrentValue() <= startHour
                 && (int)wv_minutes.getCurrentValue() <= startMin) {
-            if(endMin  > startMin) {
-                setSecondAdapter(startSecond,DEFAULT_END_SECOND);
-            }else {
+            if((int)wv_day.getCurrentValue() == endDay
+                    && (int)wv_hours.getCurrentValue() == endHour
+                    && (int)wv_minutes.getCurrentValue() == endMin) {
                 setSecondAdapter(startSecond,endSecond);
+            }else {
+                setSecondAdapter(startSecond,DEFAULT_END_SECOND);
             }
         }else if((int)wv_minutes.getCurrentValue() >= endMin
                 && (int)wv_hours.getCurrentValue() >= endHour

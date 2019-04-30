@@ -143,13 +143,14 @@ public class TimePickerBuilder {
 
 
     /**
-     * 设置起始时间
+     * 设置起始时间,不会循环的
      * 因为系统Calendar的月份是从0-11的,所以如果是调用Calendar的set方法来设置时间,月份的范围也要是从0-11
      */
 
     public TimePickerBuilder setRangDate(Calendar startDate, Calendar endDate) {
         mPickerOptions.startDate = startDate;
         mPickerOptions.endDate = endDate;
+        mPickerOptions.cyclic = false;
         return this;
     }
 

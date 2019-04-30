@@ -247,16 +247,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            e.printStackTrace();
 //        }
 //        startDate.set(2019,3,27,12,57,12);
-//        endDate.set(2019,3,30,23,15,12);
-        startDate.add(Calendar.MINUTE,5);
-        endDate.setTimeInMillis(System.currentTimeMillis() + 10 * 60 * 60 * 1000);
+        endDate.set(2025,7,2,23,15,12);
+//        startDate.add(Calendar.MINUTE,5);
+//        endDate.setTimeInMillis(System.currentTimeMillis() + 100 * 60 * 60 * 1000);
         pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
                 Toast.makeText(MainActivity.this, getTime(date), Toast.LENGTH_SHORT).show();
             }
         })
-                .setType(new boolean[]{false, false, true, true, true, true})// 默认全部显示
+                .setType(new boolean[]{false, false, true, true, true, false})// 默认全部显示
                 .setCancelText("取消")//取消按钮文字
                 .setSubmitText("确认")//确认按钮文字
                 .setDate(startDate)
@@ -267,6 +267,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setTextXOffset(0, 0, 0, 40, 0, -40)
                 .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
                 .setDividerColor(0xFF24AD9D)
+                .isCyclic(false)
                 .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
                     @Override
                     public void onTimeSelectChanged(Date date) {
